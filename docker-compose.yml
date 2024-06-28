@@ -1,0 +1,19 @@
+version : "2"
+services:
+  noip:
+    image: "noip:3.0.0-b01"
+    container_name: "noip"
+    hostname: "noip"
+    network_mode: "host"
+    environment:
+      TZ: "Asia/Tokyo"
+      NOIP_USERNAME:  "sg76gda"
+      NOIP_PASSWORD:  "YfuxEKThE26r"
+      NOIP_HOSTNAMES: "group-mgmt7458,mgmt7458.ddns.net"
+    command: "/usr/local/bin/noip-duc"
+    restart: always
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://127.0.0.1:514"
+        tag: "noip"
